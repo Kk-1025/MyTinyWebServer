@@ -1,0 +1,53 @@
+Date : 2023-04-13 23:24:55
+Directory : /home/gayou1025/桌面/MyWebServer/code
+Total : 22 files,  1387 codes, 131 comments, 491 blanks, all 2009 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C++      |         22 |      1,387 |        131 |        491 |      2,009 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                      | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                         |         22 |      1,387 |        131 |        491 |      2,009 |
+| . (Files)                                                 |          1 |         10 |          0 |          7 |         17 |
+| buffer                                                    |          2 |        175 |         22 |         73 |        270 |
+| http                                                      |          6 |        141 |          0 |         59 |        200 |
+| log                                                       |          3 |        385 |         37 |        140 |        562 |
+| pool                                                      |          4 |        110 |          4 |         35 |        149 |
+| server                                                    |          4 |        397 |         55 |        115 |        567 |
+| timer                                                     |          2 |        169 |         13 |         62 |        244 |
++-----------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                  | language | code       | comment    | blank      | total      |
++-----------------------------------------------------------+----------+------------+------------+------------+------------+
+| /home/gayou1025/桌面/MyWebServer/code/buffer/buffer.cpp     | C++      |        135 |         22 |         57 |        214 |
+| /home/gayou1025/桌面/MyWebServer/code/buffer/buffer.h       | C++      |         40 |          0 |         16 |         56 |
+| /home/gayou1025/桌面/MyWebServer/code/http/httpconn.cpp     | C++      |          0 |          0 |          1 |          1 |
+| /home/gayou1025/桌面/MyWebServer/code/http/httpconn.h       | C++      |         46 |          0 |         22 |         68 |
+| /home/gayou1025/桌面/MyWebServer/code/http/httprequest.cpp  | C++      |          0 |          0 |          1 |          1 |
+| /home/gayou1025/桌面/MyWebServer/code/http/httprequest.h    | C++      |         58 |          0 |         19 |         77 |
+| /home/gayou1025/桌面/MyWebServer/code/http/httpresponse.cpp | C++      |          0 |          0 |          1 |          1 |
+| /home/gayou1025/桌面/MyWebServer/code/http/httpresponse.h   | C++      |         37 |          0 |         15 |         52 |
+| /home/gayou1025/桌面/MyWebServer/code/log/blockqueue.hpp    | C++      |        155 |         16 |         64 |        235 |
+| /home/gayou1025/桌面/MyWebServer/code/log/log.cpp           | C++      |        170 |         19 |         55 |        244 |
+| /home/gayou1025/桌面/MyWebServer/code/log/log.h             | C++      |         60 |          2 |         21 |         83 |
+| /home/gayou1025/桌面/MyWebServer/code/main.cpp              | C++      |         10 |          0 |          7 |         17 |
+| /home/gayou1025/桌面/MyWebServer/code/pool/sqlconnRAII.hpp  | C++      |         21 |          1 |          9 |         31 |
+| /home/gayou1025/桌面/MyWebServer/code/pool/sqlconnpool.cpp  | C++      |          0 |          0 |          1 |          1 |
+| /home/gayou1025/桌面/MyWebServer/code/pool/sqlconnpool.h    | C++      |         31 |          3 |         14 |         48 |
+| /home/gayou1025/桌面/MyWebServer/code/pool/threadpool.hpp   | C++      |         58 |          0 |         11 |         69 |
+| /home/gayou1025/桌面/MyWebServer/code/server/epoller.cpp    | C++      |         52 |         15 |         25 |         92 |
+| /home/gayou1025/桌面/MyWebServer/code/server/epoller.h      | C++      |         23 |          0 |         11 |         34 |
+| /home/gayou1025/桌面/MyWebServer/code/server/webserver.cpp  | C++      |        267 |         35 |         59 |        361 |
+| /home/gayou1025/桌面/MyWebServer/code/server/webserver.h    | C++      |         55 |          5 |         20 |         80 |
+| /home/gayou1025/桌面/MyWebServer/code/timer/heaptimer.cpp   | C++      |        126 |         13 |         46 |        185 |
+| /home/gayou1025/桌面/MyWebServer/code/timer/heaptimer.h     | C++      |         43 |          0 |         16 |         59 |
+| Total                                                     |          |      1,387 |        131 |        491 |      2,009 |
++-----------------------------------------------------------+----------+------------+------------+------------+------------+
