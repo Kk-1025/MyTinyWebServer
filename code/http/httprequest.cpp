@@ -28,11 +28,6 @@ HttpRequest::HttpRequest()
 void HttpRequest::init()
 {
     state_ = REQUEST_LINE;
-
-    //method_ = path_ = version_ = body_ = "";
-    
-    //header_.clear();
-    //post_.clear();
 }
 
 
@@ -53,7 +48,8 @@ bool HttpRequest::parse(Buffer &buff)
         const char* lineEnd = search(buff.peek(), buff.beginWriteConst(), CRLF, CRLF + 2);
         string line(buff.peek(), lineEnd);
 
-        switch (state_)         // 根据当前请求状态 来处理对应信息
+        // 状态机：根据当前请求状态 来处理对应信息
+        switch (state_)
         {
         case REQUEST_LINE:      // 请求行
             if (!parseRequestLine_(line)) {     // 解析请求行
@@ -272,7 +268,6 @@ void HttpRequest::parseFromUrlEncoded_()
     int n = body_.size();   // 请求正文的长度
     int i = 0, j = 0;
 
-    // Bug，每次解析 post 都清空一下之前的记录，防止出错
     post_.clear();
 
     // 遍历请求正文的每个字符
@@ -366,12 +361,6 @@ bool HttpRequest::userVerify(const string& name, const string& pwd, bool isLogin
     // 存储 查询结果
     MYSQL_RES* res = mysql_store_result(sql);
 
-    // 返回结果集的字段数（列数）
-    // unsigned int j = mysql_num_fields(res);
-
-    // 返回结果集中当前列的结构
-    // MYSQL_FIELD* fields = mysql_fetch_field(res);
-
     // 成功查询到 该用户名 的信息
     while (MYSQL_ROW row = mysql_fetch_row(res)) {      // 返回结果集中下一行的结构
         // 打印日志
@@ -381,7 +370,7 @@ bool HttpRequest::userVerify(const string& name, const string& pwd, bool isLogin
 
         if (isLogin) {                  // 登录操作
 
-            if (pwd == password) {          // 成功登录     这个判断有问题，只要前面的输入对了就算对？？
+            if (pwd == password) {          // 成功登录
                 flag = true;
             }
             else {                          // 登录失败，密码错误

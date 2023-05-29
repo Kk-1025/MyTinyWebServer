@@ -36,10 +36,6 @@ private:
     ~SqlConnPool();
 
     unsigned int MAX_CONN_;                  // 最大连接数
-    
-    // 这两个变量完全没用到？？
-    int useCount_;                  // 当前连接数
-    int freeCount_;                 // 等待释放的连接数
 
     std::queue<MYSQL*> connQue_;    // 连接队列
     std::mutex mtx_;                

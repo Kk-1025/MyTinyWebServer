@@ -194,7 +194,7 @@ ssize_t Buffer::writeFd(int fd, int* saveErrno)
 // 获取 缓冲区首元素地址
 char* Buffer::beginPtr_()
 {
-    //return &*buffer_.begin();   // vector数组 首元素的地址
+    // vector数组 首元素的地址
     return &buffer_.front();
 }
 
@@ -202,7 +202,7 @@ char* Buffer::beginPtr_()
 // 获取 缓冲区首元素地址
 const char* Buffer::beginPtr_() const
 {
-    //return &*buffer_.begin();   // vector数组 首元素的地址
+    // vector数组 首元素的地址
     return &buffer_.front();
 }
 

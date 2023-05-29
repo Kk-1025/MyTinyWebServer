@@ -16,7 +16,7 @@ void HeapTimer::adjust(int id, int newExpires)
 }
 
 
-// 添加新的计时器节点
+// 添加新的定时器节点
 void HeapTimer::add(int id, int timeOut, const timeoutCallBack& cb)
 {
     assert(0 <= id);
@@ -58,7 +58,7 @@ void HeapTimer::doWork(int id)
 }
 
 
-// 清空 计时器节点堆、映射表
+// 清空 定时器节点堆、映射表
 void HeapTimer::clear()
 {
     heap_.clear();
@@ -102,7 +102,7 @@ void HeapTimer::pop()
 // 返回最近一次 时钟到期所剩时间
 int HeapTimer::getNextTick()
 {
-    // 先执行一次 时钟滴答，清除已经到期的计时器
+    // 先执行一次 时钟滴答，清除已经到期的定时器
     tick();
 
     int64_t res = 0;
@@ -124,8 +124,6 @@ void HeapTimer::del_(size_t index)
     assert(!heap_.empty() && 0 <= index && index < heap_.size());
 
     size_t n = heap_.size() - 1;
-
-    //assert(index <= n);   // 前面判断过了 这里应该没必要判断了
 
     // 如果不是 尾节点
     if (index < n) {
@@ -161,7 +159,7 @@ void HeapTimer::siftup_(size_t index)
 }
 
 
-// 将 index 节点往下更新到合适的位置，n 为heap大小？？？n的意义何在？？？
+// 将 index 节点往下更新到合适的位置，n 为heap应该有的大小（可能是删除节点后的堆大小）
 bool HeapTimer::siftdown_(size_t index, size_t n)
 {
     assert(0 <= index && index < heap_.size());

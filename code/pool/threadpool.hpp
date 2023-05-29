@@ -25,7 +25,7 @@ public:
             std::shared_ptr<Pool> pool(pool_);      // 创建一个局部变量给lambda使用
 
             //std::thread([pool = pool_] {
-            std::thread([pool] {                    // ??只能用值传递
+            std::thread([pool] {
 
                 std::unique_lock<std::mutex> locker(pool->mtx);         // unique_lock 可随时解锁加锁
 

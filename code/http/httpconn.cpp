@@ -101,8 +101,7 @@ ssize_t HttpConn::write(int* saveErrno)
         else if (static_cast<size_t>(len) > iov_[0].iov_len) {      // 第一个 iovec 的数据已写完，第二个不知道写完没
 
             // iov_[1] 更新 至未写入数据的位置
-            iov_[1].iov_base = (uint8_t*)iov_[1].iov_base + (len - iov_[0].iov_len);  // 为什么要转换指针？？？
-            //iov_[1].iov_base = iov_[1].iov_base + (len - iov_[0].iov_len);
+            iov_[1].iov_base = (uint8_t*)iov_[1].iov_base + (len - iov_[0].iov_len);
             iov_[1].iov_len -= (len - iov_[0].iov_len);
 
             // iov_[0]已写完，可以清空 iov_[0]
@@ -115,7 +114,6 @@ ssize_t HttpConn::write(int* saveErrno)
 
             // 更新 iov_[0] 至未写入位置
             iov_[0].iov_base = (uint8_t*)iov_[0].iov_base + len;
-            //iov_[0].iov_base = iov_[0].iov_base + len;
             iov_[0].iov_len -= len;
 
             writeBuff_.retrieve(len);       // 更新写缓冲区
@@ -190,8 +188,6 @@ bool HttpConn::process()
         iovCnt_ = 2;
     }
 
-    // ???
-    //LOG_DEBUG("filesize:%d, %d to %d", response_.fileLen(), iovCnt_, toWriteBytes());
     LOG_DEBUG("%s, Response info size: %d, Resources size: %d, total: %d",
             response_.path().c_str(), iov_[0].iov_len, response_.fileLen(), toWriteBytes());
 

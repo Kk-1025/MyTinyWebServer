@@ -50,8 +50,6 @@ HttpResponse::HttpResponse()
     code_ = -1;
     isKeepAlive_ = false;
 
-    //path_ = srcDir_ = "";
-
     mmFile_ = nullptr;
     mmFileStat_ = { 0 };
 }

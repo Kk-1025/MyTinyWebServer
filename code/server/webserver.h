@@ -26,7 +26,7 @@ public:
     WebServer(
         // 监听端口，ET模式，timeoutMs，优雅退出
         // Mysql：端口，用户名，密码，数据库名
-        // 连接池数量，线程池数量，日志开关、等级、异步队列容量
+        // 连接池大小，线程池大小，日志开关、等级、异步队列容量
         int port, int trigMode, int timeoutMS, bool optLinger,
         int sqlPort, const char* sqlUser, const char* sqlPwd, const char* dbName, 
         int connPoolNum, int threadNum, bool openLog, int logLevel, int logQueSize
@@ -58,17 +58,17 @@ private:
     static int setFdNonblock_(int fd);
 
     int port_;              // 监听端口
-    int timeoutMS_;         // 
+    int timeoutMS_;         // 超时时间
     bool openLinger_;       // 是否开启 优雅退出
     bool isClose_;          // 是否关闭服务器
 
     char* srcDir_;          // 记录服务器资源所在路径   .../resources
-    int listenFd_;          // 
+    int listenFd_;          // 记录监听的文件描述符
 
     uint32_t listenEvent_;  // 监听事件
     uint32_t connEvent_;    // 连接事件
 
-    std::unique_ptr<HeapTimer> timer_;          // 计时器
+    std::unique_ptr<HeapTimer> timer_;          // 定时器
     std::unique_ptr<ThreadPool> threadpool_;    // 线程池
     std::unique_ptr<Epoller> epoller_;          // epoll
 

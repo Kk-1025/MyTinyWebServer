@@ -26,7 +26,7 @@ public:
     uint32_t getEvents(size_t i) const;
 
 private:
-    int epollFd_;                               // 保存 epoll 的 fd
+    int epollFd_;                        // 保存 epoll 的 fd
 
     std::vector<epoll_event> events_;    // epoll事件 数组
 };

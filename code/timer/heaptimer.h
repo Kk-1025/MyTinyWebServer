@@ -10,7 +10,7 @@
 #include<arpa/inet.h>
 #include<functional>
 #include<assert.h>
-#include<chrono>        // 时间编程库
+#include<chrono>
 
 #include"../log/log.h"
 
@@ -21,7 +21,7 @@ using MS = std::chrono::milliseconds;               // 时间间隔      Duratio
 using timeStamp = Clock::time_point;                // 时间戳/点     Time point
 
 
-// 计时器节点 结构体
+// 定时器节点 结构体
 struct timerNode {
     int id;
     timeStamp expires;      // 有效期/到期时间
@@ -53,11 +53,11 @@ public:
 
 private:
     void del_(size_t i);
-    void siftup_(size_t i);                     // 筛选
+    void siftup_(size_t i);
     bool siftdown_(size_t index, size_t n);
     void swapNode_(size_t i, size_t j);
 
-    std::vector<timerNode> heap_;           // 计时器节点 数组，最小堆
+    std::vector<timerNode> heap_;           // 定时器节点 数组，最小堆
     std::unordered_map<int, size_t> ref_;   // 映射，节点 id To heap_Index
 };
 

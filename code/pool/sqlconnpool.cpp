@@ -4,6 +4,7 @@
 using namespace std;
 
 
+// 单例模式：局部静态变量的饿汉模式
 SqlConnPool* SqlConnPool::instance()
 {
     static SqlConnPool connPool;
@@ -116,10 +117,7 @@ void SqlConnPool::closePool()
 
 
 SqlConnPool::SqlConnPool()
-{
-    useCount_ = 0;
-    freeCount_ = 0;
-}
+{ }
 
 
 SqlConnPool::~SqlConnPool()

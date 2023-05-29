@@ -4,10 +4,10 @@
 #define HTTP_RESPONSE_H
 
 #include<unordered_map>
-#include<fcntl.h>       // open
-#include<unistd.h>      // close
-#include<sys/stat.h>    // stat
-#include<sys/mman.h>    // mmap/munmap
+#include<fcntl.h>
+#include<unistd.h>
+#include<sys/stat.h>
+#include<sys/mman.h>
 
 #include"../buffer/buffer.h"
 #include"../log/log.h"
@@ -36,7 +36,7 @@ private:
 
     std::string getFileType_();
 
-    int code_;                  // 
+    int code_;                  // 要返回的http状态码
     bool isKeepAlive_;          // 是否保持连接
 
     std::string path_;          // 具体资源所在路径

@@ -8,7 +8,7 @@
 #include<string>
 #include<regex>
 #include<errno.h>
-#include<mysql/mysql.h>     // mysql
+#include<mysql/mysql.h>
 
 #include"../buffer/buffer.h"
 #include"../log/log.h"
@@ -24,18 +24,6 @@ public:
         HEADERS,
         BODY,
         FINISH,
-    };
-
-    // http代码 ？？？没有用到？？？
-    enum HTTP_CODE {
-        NO_REQUEST,             // 没有请求
-        GET_REQUEST,            // 获取请求
-        BAD_REQUEST,            // 错误请求
-        NO_RESOURSE,            // 没有资源
-        FORBIDDEN_REQUEST,      // 禁止的请求
-        FILE_REQUEST,           // 文件请求
-        INTERNAL_ERROR,         // 内部错误
-        CLOSED_CONNECTION,      // 关闭的连接
     };
 
     HttpRequest();

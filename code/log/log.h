@@ -8,7 +8,7 @@
 #include<thread>
 #include<sys/time.h>
 #include<string.h>
-#include<stdarg.h>      // vastart/va_end
+#include<stdarg.h>
 #include<assert.h>
 #include<sys/stat.h>
 
@@ -47,8 +47,6 @@ private:
 
     const char* path_;      // 日志文件路径
     const char* suffix_;    // 文件后缀名
-
-    int MAX_LINES_;     // ??也没有用到？
     
     int lineCount_;     // 写入日志总行数
     int toDay_;         // 当前日期（day）

@@ -8,9 +8,6 @@ using namespace std;
 Log::Log()
 {
     lineCount_ = 0;
-    //toDay_ = 0;
-
-    //isAsync_ = false;
 
     fp_ = nullptr;
 
@@ -86,7 +83,6 @@ void Log::init(
     char fileName[LOG_NAME_LEN] = { 0 };
 
     // 生成日志文件的路径
-    //int snprintf(char* dest_str, size_t size, const char* format, ...);
     snprintf(fileName, LOG_NAME_LEN - 1, "%s/%04d_%02d_%02d%s",
             path_, t.tm_year + 1900, t.tm_mon + 1, t.tm_mday, suffix_);
 
@@ -115,7 +111,7 @@ void Log::init(
 }
 
 
-// 在静态区生成一个变量 来使用
+// 单例模式：局部静态变量的懒汉模式
 Log* Log::instance()
 {
     static Log inst;

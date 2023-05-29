@@ -52,7 +52,7 @@ WebServer::WebServer(
                         (connEvent_ & EPOLLET ? "ET" : "LT"));
             LOG_INFO("LogSys level:%d", logLevel);                                      // 打印日志等级
             LOG_INFO("srcDir:%s", srcDir_);                                             // 打印资源路径
-            LOG_INFO("SqlConnPool num:%d, ThreadPool num:%d", connPoolNum, threadNum);  // 打印 Mysql连接数、线程池线程数
+            LOG_INFO("SqlConnPool num:%d, ThreadPool num:%d", connPoolNum, threadNum);  // 打印 Mysql连接线程数、线程池线程数
         }
     }
 }
@@ -80,7 +80,7 @@ void WebServer::start()
     // 只要服务器正常运行
     while (!isClose_) {
 
-        // 开启计时器
+        // 开启定时器
         if (timeoutMS_ > 0) {
             timeMS = timer_->getNextTick();
         }
@@ -146,7 +146,7 @@ bool WebServer::initSocket_()
     // 设置端口复用，只有最后一个套接字会正常接收数据
     int optval = 1;
     ret = setsockopt(listenFd_, SOL_SOCKET, SO_REUSEADDR, (const void*)&optval, sizeof(int));
-    if (ret == -1) {        // 为啥其他地方写<0 这里又 == -1了？？？
+    if (ret < 0) {
         LOG_ERROR("Setsockopt reuseaddr error!");
         close(listenFd_);   // 关闭已经创建好的 监听fd
         return false;
@@ -231,7 +231,7 @@ void WebServer::addClient_(int fd, sockaddr_in addr)
     // 添加到 users_ 哈希表中
     users_[fd].init(fd, addr);
 
-    // 如果有设置 超时时间，设置计时器，到期就 关闭客户端连接
+    // 如果有设置 超时时间，设置定时器，到期就 关闭客户端连接
     if (timeoutMS_ > 0) {
         // 回调函数为 bind：WebServer this->closeConn_(&users_[fd]);
         timer_->add(fd, timeoutMS_, std::bind(&WebServer::closeConn_, this, &users_[fd]));
@@ -363,7 +363,7 @@ void WebServer::onWrite_(HttpConn* client)
     int writeErrno = 0;
     int ret = client->write(&writeErrno);   // 客户端写入信息，并返回结果
     if (client->toWriteBytes() == 0) {      // 传输完成
-        if (client->isKeepAlive()) {        // 客户端仍保持连接
+        if (client->isKeepAlive()) {        // 客户端仍保持长连接
             onProcess_(client);             // 缓冲区有数据 就继续处理客户端请求，否则将事件改为读事件 监听下一次请求
             return;
         }
@@ -396,6 +396,5 @@ int WebServer::setFdNonblock_(int fd)
 {
     assert(fd > 0);
 
-    //return fcntl(fd, F_SETFL, fcntl(fd, F_GETFD, 0) | O_NONBLOCK);
     return fcntl(fd, F_SETFL, fcntl(fd, F_GETFL) | O_NONBLOCK);
 }
